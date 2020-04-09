@@ -53,21 +53,22 @@
   "Return code in current region."
   (buffer-substring-no-properties beg end))
 
+(defun carbon-now-sh--link ()
+  "Generate link for code in region to carbon.now.sh."
+  (concat carbon-now-sh-baseurl "?code="
+          (url-hexify-string (carbon-now-sh--region))))
+
 ;;;###autoload
 (defun carbon-now-sh ()
   "Open current region in carbon.now.sh."
   (interactive)
-  (browse-url
-   (concat carbon-now-sh-baseurl "?code="
-           (url-hexify-string (carbon-now-sh--region)))))
+  (browse-url (carbon-now-sh--link)))
 
 ;;;###autoload
 (defun carbon-now-sh-copy ()
   "Copy a carbon.now.sh link to the copy in region."
   (interactive)
-  (kill-new
-   (concat carbon-now-sh-baseurl "?code="
-           (url-hexify-string (carbon-now-sh--region)))))
+  (kill-new (carbon-now-sh--link)))
 
 (provide 'carbon-now-sh)
 ;;; carbon-now-sh.el ends here
