@@ -61,5 +61,13 @@
    (concat carbon-now-sh-baseurl "?code="
            (url-hexify-string (carbon-now-sh--region)))))
 
+;;;###autoload
+(defun carbon-now-sh-copy ()
+  "Copy a carbon.now.sh link to the copy in region."
+  (interactive)
+  (kill-new
+   (concat carbon-now-sh-baseurl "?code="
+           (url-hexify-string (carbon-now-sh--region)))))
+
 (provide 'carbon-now-sh)
 ;;; carbon-now-sh.el ends here
